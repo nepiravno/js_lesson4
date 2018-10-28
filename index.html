@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Lesson 4</title>
+  <script>
+    /*
+    1. Создать функцию calculate(operand1, operand2, sign), где operand1 и operand2 — два числа, 
+    sign — знак арифметической операции.
+      Функция должна расчитывать результат операции, исходя из переданного ей знака. 
+      Функция должна проверять корректность введенных чисел и знака операции.
+      Все аргументы для функции принять от пользователя.
+    */
+    console.log('Задача №1: Создать функцию calculate(operand1, operand2, sign), где operand1 и operand2 — два числа, sign — знак арифметической операции. Функция должна расчитывать результат операции, исходя из переданного ей знака. Функция должна проверять корректность введенных чисел и знака операции. Все аргументы для функции принять от пользователя.');
+
+    var userOperand1 = +prompt('Введите первое число', '2');
+    var checkOperand = isNumeric(userOperand1);
+    if (!checkOperand) {
+      alert('Ошибка! Вы ввели не число!');
+    }
+
+    var userOperand2 = +prompt('Введите второе число', '2');
+    checkOperand = isNumeric(userOperand2);
+    if (!checkOperand) {
+      alert('Ошибка! Вы ввели не число!');
+    }
+
+    var userSign = prompt('Введите один из знаков арифметических операций: + - * /', '');
+    var result;
+
+    function isNumeric(n) { 
+      return !isNaN(parseFloat(n)) && isFinite(n); //проверка на число
+    }
+    function calculate(operand1, operand2, sign) {
+      switch(userSign) {
+        case '+': 
+          result = userOperand1 + userOperand2;
+          break;
+        case '-': 
+          result = userOperand1 - userOperand2;
+          break;
+        case '*': 
+          result = userOperand1 * userOperand2;
+          break;
+        case '/': 
+          result = userOperand1 / userOperand2;
+          break;
+        default:
+          alert('Такого арифметического знака нет!');
+      }
+      return result;
+    }
+
+    result = calculate(userOperand1, userOperand2, userSign);
+
+    if (result != undefined) {
+      alert('Результат операции ' + userOperand1 + userSign + userOperand2 + ' равен ' + result);
+      console.log('Результат: ' + userOperand1 + userSign + userOperand2 + '=' + result);
+    }
+
+    console.log('****************************');
+    
+
+    /*
+    2. Создать функцию, возводящую число в степень, число и сама степень вводится пользователем.
+    */
+    console.log('Задача №2: Создать функцию, возводящую число в степень, число и сама степень вводится пользователем.')
+
+    var userNumber = +prompt('Введите число, которое нужно возвести в степень', '2');
+    var userExponent = +prompt('Введите степень, в которою нужно возвести число', '3');
+
+    function calculateExponent (base, exponent) {
+      return Math.pow(base, exponent);
+    }
+
+    var result = calculateExponent(userNumber, userExponent);
+
+    alert('Результат возведения числа ' + userNumber + ' в степень ' + userExponent + ' равен ' + result);
+    console.log('Результат: ' + userNumber + '^' + userExponent + '=' + result);
+  </script>
+</head>
+<body>
+
+</body>
+</html>
